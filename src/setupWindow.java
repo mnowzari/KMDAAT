@@ -35,7 +35,6 @@ public class setupWindow extends JFrame{
 		JPanel FL = new JPanel();
 		FL.setSize(100, 75);
 		FL.setBackground(Color.GRAY);
-//		FL.setLayout(new BoxLayout(FL, BoxLayout.PAGE_AXIS));
 
 		JLabel flCamberLabel = new JLabel("FL Camber");
 		final JTextField flCamberField = new JTextField(12);

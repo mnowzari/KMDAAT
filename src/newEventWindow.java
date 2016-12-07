@@ -79,7 +79,7 @@ public class newEventWindow extends JFrame{
 		okButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				if (!eventNameField.getText().isEmpty()){
-					if (e.eventName == ""){
+					if (e.eventName == null){
 						e.eventName = eventNameField.getText();
 						e.eventLocation = eventLocationField.getText();
 						e.competingClass = classNameField.getText();
@@ -87,9 +87,12 @@ public class newEventWindow extends JFrame{
 						e.carWeight = Double.valueOf(carWeightField.getText());	
 						e.tireName = tireOptionField.getText();
 						e.tireSize = tireSizeField.getText();
-//						System.out.println(e.eventName + ", " + 
-//								e.eventLocation + ", " + e.carWeight + ", " + e.tireName 
-//								+ ", " + e.tireSize);
+						
+						e.genFilename();
+						newDriversWindow ndw = new newDriversWindow(e);
+						
+						setVisible(false);
+						dispose();
 					}
 					else {
 						e.saveEventToXML();
@@ -101,18 +104,15 @@ public class newEventWindow extends JFrame{
 						e.carWeight = Double.valueOf(carWeightField.getText());
 						e.tireName = tireOptionField.getText();
 						e.tireSize = tireSizeField.getText();
-//						System.out.println(e.eventName + ", " + 
-//								e.eventLocation + ", " + e.carWeight + ", " + e.tireName 
-//								+ ", " + e.tireSize);
+						
+						e.genFilename();
+						newDriversWindow ndw = new newDriversWindow(e);
+						
+						setVisible(false);
+						dispose();
 					}	
 				}
-				else {
-					setVisible(false);
-					dispose();
-				}
-				e.genFilename();
-				setVisible(false);
-				dispose();
+				
 			}
 		});
 		

@@ -20,8 +20,6 @@ public class mainWindow extends JFrame{
 		setLocationRelativeTo(null);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -40,9 +38,9 @@ public class mainWindow extends JFrame{
 		Thread ttdThread = new Thread(ttd);
 		ttdThread.start();
 		
-		livePlotter livePlot = new livePlotter(10, monitorYSize / 2, monitorXSize, monitorYSize, e);
-		Thread plotThread = new Thread(livePlot);
-		plotThread.start();
+//		livePlotter livePlot = new livePlotter(10, monitorYSize / 2, monitorXSize, monitorYSize, e);
+//		Thread plotThread = new Thread(livePlot);
+//		plotThread.start();
 		
 	}
 }

@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class makeEventWarningWindow extends JFrame{
-	public makeEventWarningWindow(){
+public class warningWindow extends JFrame{
+	public warningWindow(String msg){
 		setLayout(null);
 		setTitle("Achtung!");
 		setSize(220, 75);
@@ -24,7 +24,7 @@ public class makeEventWarningWindow extends JFrame{
 		pane.setSize(200, 150);
 		pane.setLocation(0, 0);
 		pane.setBackground(Color.GRAY);
-		final JLabel warningMsg = new JLabel("Make An Event First!");
+		final JLabel warningMsg = new JLabel(msg);
 		
 		JButton OK = new JButton("OK");
 		OK.setBackground(Color.LIGHT_GRAY);

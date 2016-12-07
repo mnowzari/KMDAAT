@@ -19,7 +19,7 @@ public class Event {
 	double[] flSetup;
 	double[] rlSetup;
 	double[] rrSetup;
-	ArrayList<Lap> laps;
+	ArrayList<Driver> drivers;
 	dataLogger dl;
 	
 	public Event(dataLogger dl){
@@ -41,8 +41,7 @@ public class Event {
 		flSetup = new double[2];
 		rrSetup = new double[2];
 		rlSetup = new double[2];
-		laps = new ArrayList<Lap>();
-		
+		drivers = new ArrayList<Driver>();
 	}
 	
 	public void genFilename(){
@@ -53,18 +52,21 @@ public class Event {
 		xmlLogger xm = new xmlLogger();
 	}
 	
-	public void addLap(Lap newLap){
-		laps.add(newLap);
+	public void calcPercentBTD(){
+		
 	}
 	
+	public void calcPercentBTC(){
+		
+	}
 	
 	public void dumpData(){
-		System.out.println(filename + ", " + eventName + ", " + eventLocation + ", " + competingClass + ", " + tireName + ", " + tireSize);
-		for (int i = 0; i < laps.size(); i++){
-			for (int k = 0; k < laps.get(i).data.size(); k++){
-				System.out.println("Lap " + laps.get(i).id + " velocity: " + laps.get(i).data.get(k).velocity);
-			}
-		}
+//		System.out.println(filename + ", " + eventName + ", " + eventLocation + ", " + competingClass + ", " + tireName + ", " + tireSize);
+//		for (int i = 0; i < laps.size(); i++){
+//			for (int k = 0; k < laps.get(i).data.size(); k++){
+//				System.out.println("Lap " + laps.get(i).lapNumber + " velocity: " + laps.get(i).data.get(k).velocity);
+//			}
+//		}
 	}
 	
 	public void resetSuspensionSettings(){
@@ -92,6 +94,6 @@ public class Event {
 		flSetup = new double[2];
 		rrSetup = new double[2];
 		rlSetup = new double[2];
-		laps.clear();
+		drivers.clear();
 	}
 }

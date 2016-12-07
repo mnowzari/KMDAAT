@@ -47,6 +47,17 @@ public class mainMenu extends JFrame{
 		
 		dataAnalyzer.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {	
+				
+			}
+		});
+		
+		JButton testDaySuite = new JButton("Test Day Suite");
+		testDaySuite.setForeground(Color.DARK_GRAY);
+		testDaySuite.setBackground(buttonColor1);
+		
+		testDaySuite.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {	
+				tireSweepWindow tsw = new tireSweepWindow();
 			}
 		});
 		
@@ -60,7 +71,7 @@ public class mainMenu extends JFrame{
 					setupWindow sw = new setupWindow(e);
 				}
 				else {
-					makeEventWarningWindow mew = new makeEventWarningWindow();
+					warningWindow mew = new warningWindow("Make A New Event!");
 				}
 			}
 		});
@@ -75,16 +86,16 @@ public class mainMenu extends JFrame{
 					lapManager lmp = new lapManager(e);					
 				}
 				else {
-					makeEventWarningWindow mew = new makeEventWarningWindow();
+					warningWindow mew = new warningWindow("Make A New Event!");
 				}
-//				lapManager lmp = new lapManager(e);					
 			}
 		});
 
 		buttonList.add(createNewEvent);
+		buttonList.add(suspensionSetup);
 		buttonList.add(newLap);
 		buttonList.add(dataAnalyzer);
-		buttonList.add(suspensionSetup);
+		buttonList.add(testDaySuite);
 		add(buttonList);
 
 	}

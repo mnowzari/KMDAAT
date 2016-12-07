@@ -22,7 +22,7 @@ public class livePlotter extends JFrame implements Runnable{
 		setLocation(posX, posY);
 		setResizable(false);
 		setAlwaysOnTop(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 		//--------------------------------------------------
 		this.dl = e.dl;
@@ -35,7 +35,7 @@ public class livePlotter extends JFrame implements Runnable{
 		JPanel plotPane = new JPanel(){
 			public void paintComponent(Graphics g){
 				Graphics2D g2 = (Graphics2D) g;
-				g2.setColor(Color.BLACK);
+				g2.setColor(Color.GRAY);
 				g2.fillRect(0, 0, getWidth(), getHeight());
 				drawVisual(dl, g2, counter);
 			}

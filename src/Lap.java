@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 
 public class Lap implements Runnable{
-	String id;
+	String lapNumber;
+	String driverName;
 	double rawLaptime;
 	double adjustedLaptime;
 	boolean isRecording;
 	ArrayList<dataPack> data;
 	dataLogger dl;
 	public Lap(dataLogger dl){
-		id = "";
+		lapNumber = "";
 		rawLaptime = 0.0;
 		adjustedLaptime = 0.0;
 		isRecording = false;
@@ -18,8 +19,13 @@ public class Lap implements Runnable{
 	
 	public void recordLiveData(){
 		while (isRecording == true){
-			data.add(dl.sr.dataPack);
-//			System.out.println(dl.sr.dataPack);
+			if (data.size() < 899){
+				data.add(dl.sr.dataPack);
+//				System.out.println(data.get(data.size()-1).test);
+			}
+			else {
+				isRecording = false;
+			}
     		try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
