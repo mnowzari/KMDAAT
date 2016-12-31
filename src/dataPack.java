@@ -1,6 +1,6 @@
 
 public class dataPack {
-	int id;
+	String id;
 	double velocity;
 	double latG;
 	double lonG;
@@ -17,7 +17,7 @@ public class dataPack {
 	String test;
 	
 	public dataPack(){
-		id = 0;
+		id = "0000";
 		velocity = 0.0;
 		latG = 0.0;
 		lonG = 0.0;

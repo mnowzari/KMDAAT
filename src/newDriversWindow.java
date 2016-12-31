@@ -18,7 +18,7 @@ public class newDriversWindow extends JFrame{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setAlwaysOnTop(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 		//--------------------------------------------------
 		JPanel inputPane = new JPanel();
@@ -74,13 +74,16 @@ public class newDriversWindow extends JFrame{
 							e.drivers.add(driver3);
 						}
 					}
+					eventDashboard ed = new eventDashboard(e);
+					leaderboardWindow lbw = new leaderboardWindow(e);
+					Thread leaderboard = new Thread(lbw);
+					leaderboard.start();
 					
-				}
-				else {
+					e.createNewXML();
 					
+					setVisible(false);
+					dispose();
 				}
-				setVisible(false);
-				dispose();
 			}
 		});
 		okButtonPane.add(okButton);

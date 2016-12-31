@@ -92,9 +92,11 @@ public class lapManager extends JFrame{
 					selectedDriver.addLap(newLap);
 					
 					grapher g = new grapher(e);
-					staticPlotWindow spw0 = new staticPlotWindow(g.makeSingleTireTempGraph(newLap.data, "all"), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " Tire Temp/t, ALL");
-					staticPlotWindow spw1 = new staticPlotWindow(g.makeSingleVelocityGraph(newLap.data), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " V/t Trace");
+//					staticPlotWindow spw0 = new staticPlotWindow(g.makeSingleTireTempGraph(newLap.data, "all"), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " Tire Temp/t, ALL");
+//					staticPlotWindow spw1 = new staticPlotWindow(g.makeSingleVelocityGraph(newLap.data, Color.GREEN), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " V/t Trace");
+					staticPlotWindow spw2 = new staticPlotWindow(g.overlaidVelocityGraph(selectedDriver), selectedDriver.name + " Overlaid V/t");
 					
+					e.addLap(selectedDriver.name);
 					setVisible(false);
 					dispose();
 				}

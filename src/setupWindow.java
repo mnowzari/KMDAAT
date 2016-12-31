@@ -1,10 +1,8 @@
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +15,7 @@ public class setupWindow extends JFrame{
 	    
 		setLayout(null);
 		setTitle("Suspension Setup");
-		setSize(375, 400);
+		setSize(375, 320);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -149,7 +147,8 @@ public class setupWindow extends JFrame{
 				
 				e.rrSetup[0] = Double.valueOf(rrCamberField.getText());
 				e.rrSetup[1] = Double.valueOf(rrToeField.getText());
-
+				
+				e.updateSuspensionSettings();
 				setVisible(false);
 				dispose();
 			}

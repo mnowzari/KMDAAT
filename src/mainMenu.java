@@ -90,10 +90,29 @@ public class mainMenu extends JFrame{
 				}
 			}
 		});
+		
+		JButton closeEvent = new JButton("End Event");
+		closeEvent.setForeground(Color.DARK_GRAY);
+		closeEvent.setBackground(buttonColor1);
+		
+		closeEvent.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				if (e.eventName != null){
+					closeEventWindow cew = new closeEventWindow(e);
+				}
+				else {
+					warningWindow mew = new warningWindow("Make A New Event!");
+				}
+			}	
+		});
+		
+		JButton loadEvent = new JButton("Load Event");
+		
 
 		buttonList.add(createNewEvent);
-		buttonList.add(suspensionSetup);
+		buttonList.add(closeEvent);
 		buttonList.add(newLap);
+		buttonList.add(suspensionSetup);
 		buttonList.add(dataAnalyzer);
 		buttonList.add(testDaySuite);
 		add(buttonList);

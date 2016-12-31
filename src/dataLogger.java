@@ -9,7 +9,7 @@ public class dataLogger{
 	SerialReader sr;
 	public dataLogger(){
 		try {
-			establishSerialConnection("COM3");
+			establishSerialConnection("COM5");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

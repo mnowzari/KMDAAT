@@ -3,6 +3,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Line2D;
@@ -12,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class staticPlotWindow extends JFrame{
 	BufferedImage img;
@@ -23,9 +27,9 @@ public class staticPlotWindow extends JFrame{
 	public staticPlotWindow(BufferedImage img, String windowName){
 		setLayout(null);
 		setTitle(windowName);
-		setSize(1800, 360);
+		setSize(1200, 360);
 		getContentPane().setBackground(Color.GRAY);
-		setLocationRelativeTo(null);
+		setLocation(10, 600);
 		setResizable(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -41,9 +45,9 @@ public class staticPlotWindow extends JFrame{
 		final JLabel xyLabel = new JLabel("-");
 		xyLabel.setSize(335, 13);
 		xyLabel.setLocation(25, 300);
-		
+				
 		final JPanel jpl = new JPanel();
-		jpl.setSize(1800, 305);
+		jpl.setSize(2400, 305);
 		jpl.setLocation(25, -5);
 		
 		jpl.addMouseListener(new MouseListener(){

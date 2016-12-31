@@ -6,6 +6,18 @@ System Requirements
 Windows 10 64-bit (will NOT work on a 32-bit machine)
 4GM of RAM minimum, 8GB+ recommended
 
+Development Revision 0.2
+-------------------------
+-Program now displays event data on an "event dashboard"
+
+-Program now maintains a live leaderboard of all drivers per event. It automatically places drivers in 1st, 2nd, and 3rd place based on fastest lap times. The leaderboard also displays a driver's fastest lap time, their last laptime, and the +/- difference between their previous lap and their last lap. 
+
+-Program can now save data to XML as data is entered and laps are added. XML file names are generated based on the event name field in the "Create New Event" window. XML files are persistent throughout the lifetime of the event - in the event of program failure, the XML will still be there, so all of the event data will not be lost. 
+
+-The program can 'close out' an event by asking for the BTC/D from the user and appending them to the XML. The program automatically calculates and saves percent BTC/D as well as the raw BTC/D values in the XML for future reference. 
+
+-After a lap is added for a driver, the program draws a V/t trace that will behave one of two ways: If the latest lap for the driver was their fastest lap, then the V/t will only display a trace of their fastest lap. If, however, the driver's latest lap was slower than their overall fastest lap, then the program will draw an overlaid trace of the driver's fastest lap and last lap so thay they can make comparisons.
+
 Development Revision 0.1
 -------------------------
 The program can: 
@@ -33,10 +45,10 @@ Self-Imposed Limitations
 
 TO-DO List
 -------------------------
-- Make Event Dashboard that reports basic event details
-- Write-to-XML 
+- Make Event Dashboard that reports basic event details DONE
+- Write-to-XML IN PROGRESS
 - Implement method to capture track surface and ambient air temp, either by manual entry or via hardware 
-- Make data plot window size dynamic and not hardcoded
-- Implement input validation
+- Make data plot window size dynamic and not hardcoded DONE
+- Implement input validation IN PROGRESS
 - Begin Test Day Suite 
 - Begin Data Analysis Suite

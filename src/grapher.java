@@ -8,46 +8,24 @@ public class grapher {
 		
 	}
 	
-	public BufferedImage overlaidVelocityGraph(ArrayList<Driver> drivers){
-		ArrayList<dataPack> driver1 = new ArrayList<dataPack>();
-		ArrayList<dataPack> driver2 = new ArrayList<dataPack>();
-
-		int width = 1800;
+	public BufferedImage overlaidVelocityGraph(Driver driver){
+		int width = 2400;
 		int height = 300;
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		
+		int fastestLapIndex = driver.getFastestLapIndex();
 		
+		img = makeSingleVelocityGraph(driver.laps.get(fastestLapIndex).data, Color.MAGENTA);
 		
-		return  img;
-	}
-	
-	public BufferedImage makeSingleVelocityGraph(ArrayList<dataPack> data){
-		int width = 1800;
-		int height = 300;
-		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-		for (int i = 0; i < width; i++){
-			for (int k = 0; k < height; k++){
-				img.setRGB(i, k, Color.DARK_GRAY.getRGB());
-			}
-		}
+		ArrayList<dataPack> data = driver.laps.get(driver.numberOfLaps - 1).data;
 		
-		if (data.size() < 900){
+		if (data.size() < 1200){
 			for (int i = 0; i < data.size(); i++){
 				if ((int)data.get(i).velocity == 0){
-					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.RED.getRGB());			
+					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.GREEN.getRGB());	
 				}
 				else {
-					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.RED.getRGB());	
-				}
-			}	
-		}
-		else if (data.size() > 900){
-			for (int i = 0; i < data.size() / 2; i++){
-				if ((int)data.get(i).velocity == 0){
-					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.RED.getRGB());			
-				}
-				else {
-					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.RED.getRGB());	
+					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.GREEN.getRGB());
 				}
 			}	
 		}
@@ -55,14 +33,62 @@ public class grapher {
 		return img;
 	}
 	
+	public BufferedImage makeSingleVelocityGraph(ArrayList<dataPack> data, Color lineColor){
+		int width = 2400;
+		int height = 300;
+		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+		for (int i = 0; i < width; i++){
+			for (int k = 0; k < height; k++){
+				img.setRGB(i, k, Color.BLACK.getRGB());
+				
+				if ( ( ( (double)i / 9) % 2) == 0){
+					img.setRGB(i, k, Color.DARK_GRAY.getRGB());
+				}
+				
+				if ( ( ( (double)k / 9) % 2) == 0){
+					img.setRGB(i, k, Color.DARK_GRAY.getRGB());
+				}
+			}
+		}
+		if (data.size() < 1200){
+			for (int i = 0; i < data.size(); i++){
+				if ((int)data.get(i).velocity == 0){
+					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), lineColor.getRGB());	
+				}
+				else {
+					img.setRGB(i*2, height - ((int)data.get(i).velocity), lineColor.getRGB());
+				}
+			}	
+		}
+//		else if (data.size() > 1200){
+//			for (int i = 0; i < data.size() / 2; i++){
+//				if ((int)data.get(i).velocity == 0){
+//					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.GREEN.getRGB());		
+//				}
+//				else {
+//					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.GREEN.getRGB());
+//				}
+//			}	
+//		}
+		return img;
+	}
+	
 	public BufferedImage makeSingleTireTempGraph(ArrayList<dataPack> data, String whichTire){
-		int width = 1800;
+		int width = 2400;
 		int height = 300;
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 
 		for (int i = 0; i < width; i++){
 			for (int k = 0; k < height; k++){
-				img.setRGB(i, k, Color.DARK_GRAY.getRGB());
+				img.setRGB(i, k, Color.BLACK.getRGB());
+				
+				if ( ( ( (double)i / 9) % 2) == 0){
+					img.setRGB(i, k, Color.DARK_GRAY.getRGB());
+				}
+				
+				if ( ( ( (double)k / 9) % 2) == 0){
+					img.setRGB(i, k, Color.DARK_GRAY.getRGB());
+				}
 			}
 		}
 				

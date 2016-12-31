@@ -18,20 +18,22 @@ public class SerialReader implements Runnable{
 		paket.coolantTemp = 70 + (Math.random() * ((110 - 70) + 1));
 		paket.engineRPM = 4000 + (Math.random() * ((7000 - 4000) + 1));
 		paket.oilTemp = 70 + (Math.random() * ((110 - 70) + 1));
+		paket.latG = 0 + (Math.random() * ((3 - 0) + 1));
+		paket.lonG = 0 + (Math.random() * ((3 - 0) + 1));
 
-		paket.flTemp[0] = 195 + (Math.random() * ((200 - 195) + 1));
+		paket.flTemp[0] = 190 + (Math.random() * ((200 - 190) + 1));
 		paket.flTemp[1] = 197 + (Math.random() * ((200 - 197) + 1));
 		paket.flTemp[2] = 205 + (Math.random() * ((210 - 205) + 1));
 		
-		paket.frTemp[0] = 195 + (Math.random() * ((200 - 195) + 1));
+		paket.frTemp[0] = 193 + (Math.random() * ((200 - 193) + 1));
 		paket.frTemp[1] = 197 + (Math.random() * ((200 - 197) + 1));
 		paket.frTemp[2] = 205 + (Math.random() * ((210 - 205) + 1));
 		
-		paket.rlTemp[0] = 195 + (Math.random() * ((200 - 195) + 1));
+		paket.rlTemp[0] = 192 + (Math.random() * ((200 - 192) + 1));
 		paket.rlTemp[1] = 197 + (Math.random() * ((200 - 197) + 1));
 		paket.rlTemp[2] = 205 + (Math.random() * ((210 - 205) + 1));
 		
-		paket.rrTemp[0] = 195 + (Math.random() * ((200 - 195) + 1));
+		paket.rrTemp[0] = 191 + (Math.random() * ((200 - 191) + 1));
 		paket.rrTemp[1] = 197 + (Math.random() * ((200 - 197) + 1));
 		paket.rrTemp[2] = 205 + (Math.random() * ((210 - 205) + 1));
 		

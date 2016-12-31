@@ -40,8 +40,9 @@ public class newEventWindow extends JFrame{
 		final JTextField classNameField = new JTextField(10);
 		classNameField.setBackground(Color.LIGHT_GRAY);
 		
-		JLabel classAdjustmentLabel = new JLabel("Class Adjustment Coefficient");
+		JLabel classAdjustmentLabel = new JLabel("Class Adjustment Coefficient (1 if N/A)");
 		final JTextField classAdjustmentField = new JTextField(10);
+		classAdjustmentField.setText("1");
 		classAdjustmentField.setBackground(Color.LIGHT_GRAY);
 				
 		JLabel carWeightLabel = new JLabel("Car Weight:");
@@ -95,7 +96,6 @@ public class newEventWindow extends JFrame{
 						dispose();
 					}
 					else {
-						e.saveEventToXML();
 						e.resetEvent();
 						e.eventName = eventNameField.getText();
 						e.eventLocation = eventLocationField.getText();

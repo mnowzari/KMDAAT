@@ -8,6 +8,7 @@ public class Lap implements Runnable{
 	boolean isRecording;
 	ArrayList<dataPack> data;
 	dataLogger dl;
+	
 	public Lap(dataLogger dl){
 		lapNumber = "";
 		rawLaptime = 0.0;
@@ -19,7 +20,7 @@ public class Lap implements Runnable{
 	
 	public void recordLiveData(){
 		while (isRecording == true){
-			if (data.size() < 899){
+			if (data.size() < 1199){
 				data.add(dl.sr.dataPack);
 //				System.out.println(data.get(data.size()-1).test);
 			}
