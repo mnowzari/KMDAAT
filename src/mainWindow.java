@@ -26,7 +26,7 @@ public class mainWindow extends JFrame{
 		//-----------------------------------------------------------
 		//sometimes the displays initialize before the serial port is ready, causing a null pointer exception 
 		//a 300 millisecond pause before the GUI threads initialize gives the SerialReader thread enough time to get going
-		mainMenu dataEntryWindow = new mainMenu((monitorXSize * 3) / 4, 40, e);
+		mainMenu mainMenu = new mainMenu((monitorXSize * 3) / 4, 40, e);
 		
 		try { 
 			Thread.sleep(300);

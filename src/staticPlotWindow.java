@@ -31,7 +31,7 @@ public class staticPlotWindow extends JFrame{
 		getContentPane().setBackground(Color.GRAY);
 		setLocation(10, 600);
 		setResizable(true);
-		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		//--------------------------------------------------

@@ -94,24 +94,24 @@ public class grapher {
 				
 		for (int i = 0; i < data.size(); i++){
 			if (whichTire.equalsIgnoreCase("fl")){
-				img.setRGB(i, height - ((int)data.get(i).flTemp[0]), Color.BLUE.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).flTemp[1]), Color.GREEN.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).flTemp[2]), Color.RED.getRGB());	
+				img.setRGB(i*2, height - ((int)data.get(i).flTemp[0]), Color.BLUE.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).flTemp[1]), Color.GREEN.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).flTemp[2]), Color.RED.getRGB());	
 			}
 			else if (whichTire.equalsIgnoreCase("fr")){
-				img.setRGB(i, height - ((int)data.get(i).frTemp[0]), Color.BLUE.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).frTemp[1]), Color.GREEN.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).frTemp[2]), Color.RED.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).frTemp[0]), Color.BLUE.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).frTemp[1]), Color.GREEN.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).frTemp[2]), Color.RED.getRGB());
 			}
 			else if (whichTire.equalsIgnoreCase("rr")){
-				img.setRGB(i, height - ((int)data.get(i).rrTemp[0]), Color.BLUE.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).rrTemp[1]), Color.GREEN.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).rrTemp[2]), Color.RED.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rrTemp[0]), Color.BLUE.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rrTemp[1]), Color.GREEN.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rrTemp[2]), Color.RED.getRGB());
 			}
 			else if (whichTire.equalsIgnoreCase("rl")){
-				img.setRGB(i, height - ((int)data.get(i).rlTemp[0]), Color.BLUE.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).rlTemp[1]), Color.GREEN.getRGB());
-				img.setRGB(i, height - ((int)data.get(i).rlTemp[2]), Color.RED.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rlTemp[0]), Color.BLUE.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rlTemp[1]), Color.GREEN.getRGB());
+				img.setRGB(i*2, height - ((int)data.get(i).rlTemp[2]), Color.RED.getRGB());
 			}
 			else if (whichTire.equalsIgnoreCase("all")){
 				img.setRGB(i*2, height - ((int)data.get(i).flTemp[0]), Color.BLUE.getRGB());

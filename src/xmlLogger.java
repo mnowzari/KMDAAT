@@ -74,7 +74,16 @@ public class xmlLogger {
 	}
 	
 	public void loadFromPreviousXML(String filename){
-		
+		try{
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			document = docBuilder.parse(filename);
+			
+			NodeList nList = document.getElementsByTagName("event_name");
+			System.out.println(nList.item(0).getTextContent());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	private void addEventBasics(){

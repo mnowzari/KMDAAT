@@ -66,8 +66,8 @@ public class tireTempDisplay extends JFrame implements Runnable{
 		setLocation(xPos, yPos);
 		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
-		setAlwaysOnTop(true);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setAlwaysOnTop(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		////////////////////////////////////////
 		final JPanel flTire = new JPanel();

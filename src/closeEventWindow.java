@@ -25,7 +25,7 @@ public class closeEventWindow extends JFrame{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setAlwaysOnTop(true);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		//--------------------------------------------------
 		

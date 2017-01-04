@@ -6,6 +6,14 @@ System Requirements
 Windows 10 64-bit (will NOT work on a 32-bit machine)
 4GM of RAM minimum, 8GB+ recommended
 
+Development Revision 0.3
+-------------------------
+-GUI improvements all around
+
+-Data Analysis implementation has begun. Can now draw V/t traces and TT/t traces for individual laps for a selected driver.
+
+-Load XML data to the program has been started, but for now loading doesn't work.
+
 Development Revision 0.2
 -------------------------
 -Program now displays event data on an "event dashboard"

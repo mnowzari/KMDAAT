@@ -88,6 +88,7 @@ public class newEventWindow extends JFrame{
 						e.carWeight = Double.valueOf(carWeightField.getText());	
 						e.tireName = tireOptionField.getText();
 						e.tireSize = tireSizeField.getText();
+						e.eventExists = true;
 						
 						e.genFilename();
 						newDriversWindow ndw = new newDriversWindow(e);

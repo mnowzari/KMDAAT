@@ -65,6 +65,10 @@ public class Event {
 		return this.filename;
 	}
 	
+	public void loadFromPreviousXML(String loadName){
+		xml.loadFromPreviousXML(loadName);
+	}
+	
 	public void createNewXML(){
 		xml.createNewXML();
 	}
