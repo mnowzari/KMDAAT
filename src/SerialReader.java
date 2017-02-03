@@ -13,7 +13,7 @@ public class SerialReader implements Runnable{
 		//this method will take the data from serial, parse it, make a neat dataPack object, and return that dataPack.
 		dataPack paket = new dataPack();
 		
-		paket.test = out;
+//		paket.test = out;
 		paket.velocity = 0 + (Math.random() * ((65 - 0) + 1));
 		paket.coolantTemp = 70 + (Math.random() * ((110 - 70) + 1));
 		paket.engineRPM = 4000 + (Math.random() * ((7000 - 4000) + 1));

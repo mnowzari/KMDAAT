@@ -102,6 +102,10 @@ public class xmlLogger {
 			eventLocation.setTextContent(e.eventLocation);
 			root.appendChild(eventLocation);
 			
+			Element carMakeModel = document.createElement("car_make_model");
+			carMakeModel.setTextContent(e.carMakeModel);
+			root.appendChild(carMakeModel);
+			
 			Element eventClass = document.createElement("class");
 			eventClass.setTextContent(e.competingClass);
 			root.appendChild(eventClass);

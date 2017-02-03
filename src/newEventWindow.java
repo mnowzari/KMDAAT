@@ -40,6 +40,10 @@ public class newEventWindow extends JFrame{
 		final JTextField classNameField = new JTextField(10);
 		classNameField.setBackground(Color.LIGHT_GRAY);
 		
+		JLabel carNameLabel = new JLabel("Car Make/Model:");
+		final JTextField carMakeModel = new JTextField(15);
+		carMakeModel.setBackground(Color.LIGHT_GRAY);
+		
 		JLabel classAdjustmentLabel = new JLabel("Class Adjustment Coefficient (1 if N/A)");
 		final JTextField classAdjustmentField = new JTextField(10);
 		classAdjustmentField.setText("1");
@@ -84,6 +88,7 @@ public class newEventWindow extends JFrame{
 						e.eventName = eventNameField.getText();
 						e.eventLocation = eventLocationField.getText();
 						e.competingClass = classNameField.getText();
+						e.carMakeModel = carMakeModel.getText();
 						e.adjustmentCoeff = Double.valueOf(classAdjustmentField.getText());
 						e.carWeight = Double.valueOf(carWeightField.getText());	
 						e.tireName = tireOptionField.getText();
@@ -101,6 +106,7 @@ public class newEventWindow extends JFrame{
 						e.eventName = eventNameField.getText();
 						e.eventLocation = eventLocationField.getText();
 						e.competingClass = classNameField.getText();
+						e.carMakeModel = carMakeModel.getText();
 						e.adjustmentCoeff = Double.valueOf(classAdjustmentField.getText());
 						e.carWeight = Double.valueOf(carWeightField.getText());
 						e.tireName = tireOptionField.getText();
@@ -125,6 +131,8 @@ public class newEventWindow extends JFrame{
 		inputPane.add(classNameField);
 		inputPane.add(classAdjustmentLabel);
 		inputPane.add(classAdjustmentField);
+		inputPane.add(carNameLabel);
+		inputPane.add(carMakeModel);
 		inputPane.add(carWeightLabel);
 		inputPane.add(carWeightField);
 		inputPane.add(tireOptionLabel);

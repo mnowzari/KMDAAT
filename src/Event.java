@@ -12,6 +12,7 @@ public class Event {
 	String tireName;
 	String tireSize;
 	String date;
+	String carMakeModel;
 	double ambientAirTemp;
 	double trackSurfaceTemp;
 	double BTC;
@@ -37,6 +38,7 @@ public class Event {
 		tireName = null;
 		tireSize = null;
 		competingClass = null;
+		carMakeModel = null;
 		date = getDate();
 		ambientAirTemp = 0.0;
 		trackSurfaceTemp = 0.0;
@@ -130,6 +132,7 @@ public class Event {
 		tireName = null;
 		tireSize = null;
 		competingClass = null;
+		carMakeModel = null;
 		ambientAirTemp = 0.0;
 		trackSurfaceTemp = 0.0;
 		BTC = 0.0;

@@ -34,9 +34,9 @@ public class mainWindow extends JFrame{
 			arg0.printStackTrace();
 		}
 		
-		tireTempDisplay ttd = new tireTempDisplay(10, 40, e.dl);
-		Thread ttdThread = new Thread(ttd);
-		ttdThread.start();
+//		tireTempDisplay ttd = new tireTempDisplay(10, 40, e.dl);
+//		Thread ttdThread = new Thread(ttd);
+//		ttdThread.start();
 		
 //		livePlotter livePlot = new livePlotter(10, monitorYSize / 2, monitorXSize, monitorYSize, e);
 //		Thread plotThread = new Thread(livePlot);
