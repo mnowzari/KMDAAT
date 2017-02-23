@@ -65,7 +65,7 @@ public class tireTempDisplay extends JFrame implements Runnable{
 		setSize(640, 480);
 		setLocation(xPos, yPos);
 		getContentPane().setBackground(Color.GRAY);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);

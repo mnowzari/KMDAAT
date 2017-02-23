@@ -22,7 +22,7 @@ public class dataAnalyzerWindow extends JFrame{
 		setSize(400, 480);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);

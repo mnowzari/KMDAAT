@@ -18,8 +18,8 @@ public class mainMenu extends JFrame{
 		setSize(350, 225);
 		setLocation(xPos, yPos);
 		getContentPane().setBackground(Color.GRAY);
-		setResizable(false);
-		setAlwaysOnTop(true);
+		setResizable(true);
+		setAlwaysOnTop(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 		//-----------------------------------------------

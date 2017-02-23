@@ -15,14 +15,16 @@ public class leaderboardWindow extends JFrame implements Runnable{
 	JLabel driver1;
 	JLabel driver2;
 	JLabel driver3;
+	JLabel driver4;
+	JLabel driver5;
 	public leaderboardWindow(Event event){
 		this.e = event;
 		setLayout(null);
 		setTitle("Leaderboard");
-		setSize(400, 150);
+		setSize(400, 175);
 		getContentPane().setBackground(Color.BLACK);
 		setLocation(660, 200);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -47,7 +49,17 @@ public class leaderboardWindow extends JFrame implements Runnable{
 		driver3.setFont(new Font("Monospaced", Font.BOLD, 12));
 		driver3.setForeground(Color.WHITE);
 		
+		driver4 = new JLabel("--");
+		driver4.setFont(new Font("Monospaced", Font.BOLD, 12));
+		driver4.setForeground(Color.WHITE);
+		
+		driver5 = new JLabel("--");
+		driver5.setFont(new Font("Monospaced", Font.BOLD, 12));
+		driver5.setForeground(Color.WHITE);
+		
 		leaderboardPane.add(colNames);
+		leaderboardPane.add(driver5);
+		leaderboardPane.add(driver4);
 		leaderboardPane.add(driver3);
 		leaderboardPane.add(driver2);
 		leaderboardPane.add(driver1);
@@ -56,14 +68,10 @@ public class leaderboardWindow extends JFrame implements Runnable{
 	}
 	
 	private void updateLeaderboard(ArrayList<Driver> d){
-		Driver[] drivers = new Driver[3];
+		Driver[] drivers = new Driver[5];
 		if (!e.drivers.isEmpty()){
-			drivers[0] = e.drivers.get(0);	
-			if (d.size() > 1){
-				drivers[1] = e.drivers.get(1);
-				if (d.size() == 3){
-					drivers[2] = e.drivers.get(2);
-				}
+			for (int i = 0; i < e.drivers.size(); i++){
+				drivers[i] = e.drivers.get(i);
 			}
 			
 			boolean swap = true;
@@ -82,8 +90,14 @@ public class leaderboardWindow extends JFrame implements Runnable{
 			updateText(driver1, drivers[0]);
 			if (d.size() > 1){
 				updateText(driver2, drivers[1]);
-				if (d.size() == 3){
+				if (d.size() >= 3){
 					updateText(driver3, drivers[2]);
+					if (d.size() >= 4){
+						updateText(driver4, drivers[3]);
+						if (d.size() == 5){
+							updateText(driver5, drivers[4]);
+						}
+					}
 				}
 			}
 		}

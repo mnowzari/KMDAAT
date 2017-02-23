@@ -23,7 +23,7 @@ public class closeEventWindow extends JFrame{
 		setSize(400, 250);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);

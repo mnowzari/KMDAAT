@@ -2,9 +2,12 @@
 public class main {
 
 	public static void main(String[] args) {
-		dataLogger dl = new dataLogger();
-        Event event = new Event(dl);
-		mainWindow mw = new mainWindow(event);
+		COMPortSelectionWindow cpsw = new COMPortSelectionWindow();
+		cpsw.setVisible(true);
+
+//		dataLogger dl = new dataLogger(comPort);
+//        Event event = new Event(dl);
+//		mainWindow mw = new mainWindow(event);
 	}
 
 }

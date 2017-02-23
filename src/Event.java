@@ -63,6 +63,8 @@ public class Event {
 	}
 	
 	public String genFilename(){
+//		String filenameDate = getDate();
+//		filenameDate.replaceAll("[\\\\/:*?\"<>|]", "_");
 		this.filename = this.eventName.replaceAll("\\s+","") + "_database.xml";
 		return this.filename;
 	}

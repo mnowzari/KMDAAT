@@ -23,7 +23,7 @@ public class lapManager extends JFrame{
 		setSize(275, 275);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -70,6 +70,11 @@ public class lapManager extends JFrame{
 		final JTextField rawLapTimeField = new JTextField(10);
 		rawLapTimeField.setBackground(Color.LIGHT_GRAY);
 		
+		final JLabel conesHitLabel = new JLabel("Cones Hit");
+		final JTextField conesHitField = new JTextField(10);
+		conesHitField.setBackground(Color.LIGHT_GRAY);
+		conesHitField.setText("0");
+		
 		final JLabel recordingLabel = new JLabel(" ");
 		
 		JPanel buttonPanel = new JPanel();
@@ -89,6 +94,7 @@ public class lapManager extends JFrame{
 					newLap.lapNumber = String.valueOf(lapNumber(selectedDriver) + 1);
 					newLap.rawLaptime = Double.valueOf(rawLapTimeField.getText());
 					newLap.adjustedLaptime = newLap.rawLaptime * e.adjustmentCoeff;
+					newLap.cones = Integer.valueOf(conesHitField.getText());
 					selectedDriver.addLap(newLap);
 					
 					grapher g = new grapher(e);
@@ -129,6 +135,8 @@ public class lapManager extends JFrame{
 		
 		panel.add(rawLapTimeLabel);
 		panel.add(rawLapTimeField);
+		panel.add(conesHitLabel);
+		panel.add(conesHitField);
 		panel.add(recordingLabel);
 		
 		buttonPanel.add(saveLap);

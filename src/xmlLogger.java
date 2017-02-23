@@ -231,6 +231,10 @@ public class xmlLogger {
 						adjustedLaptime.setTextContent(String.valueOf(temp.laps.get(k).adjustedLaptime));
 						lap.appendChild(adjustedLaptime);
 						
+						Element conesHit = document.createElement("cones_hit");
+						conesHit.setTextContent(String.valueOf(temp.laps.get(k).cones));
+						lap.appendChild(conesHit);
+						
 						for (int d = 0; d < temp.laps.get(k).data.size(); d++){
 							Element dataPack = document.createElement("data_packet");
 							dataPack.setAttribute("id", String.valueOf(d));
@@ -280,7 +284,7 @@ public class xmlLogger {
 							tireTemps.appendChild(rl_t);
 							dataPack.appendChild(tireTemps);
 							
-							Element gForce = document.createElement("lat_g");
+							Element gForce = document.createElement("g-force");
 							Element latG = document.createElement("lat_g");
 							latG.setTextContent(String.valueOf(temp.laps.get(k).data.get(d).latG));
 							gForce.appendChild(latG);

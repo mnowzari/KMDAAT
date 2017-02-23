@@ -18,8 +18,8 @@ public class mainWindow extends JFrame{
 	    setSize(monitorXSize,monitorYSize - 25);
         
 		setLocationRelativeTo(null);
-		getContentPane().setBackground(Color.DARK_GRAY);
-		setResizable(false);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		setResizable(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

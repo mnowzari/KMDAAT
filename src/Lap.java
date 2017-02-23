@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Lap implements Runnable{
 	String lapNumber;
 	String driverName;
+	int cones;
 	double rawLaptime;
 	double adjustedLaptime;
 	boolean isRecording;
@@ -11,6 +12,8 @@ public class Lap implements Runnable{
 	
 	public Lap(dataLogger dl){
 		lapNumber = "";
+		driverName = "";
+		cones = 0;
 		rawLaptime = 0.0;
 		adjustedLaptime = 0.0;
 		isRecording = false;

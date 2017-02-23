@@ -16,14 +16,14 @@ public class newDriversWindow extends JFrame{
 		setSize(285, 300);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 		//--------------------------------------------------
 		JPanel inputPane = new JPanel();
 		inputPane.setBackground(Color.GRAY);
-		inputPane.setSize(250, 130);
+		inputPane.setSize(250, 190);
 		inputPane.setLocation(10, 20);
 		inputPane.setLayout(new BoxLayout(inputPane, BoxLayout.Y_AXIS));
 		
@@ -38,6 +38,14 @@ public class newDriversWindow extends JFrame{
 		JLabel driver3Label = new JLabel("Driver 3 (Optional):");
 		final JTextField driver3Field = new JTextField(10);
 		driver3Field.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel driver4Label = new JLabel("Driver 4 (Optional):");
+		final JTextField driver4Field = new JTextField(10);
+		driver4Field.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel driver5Label = new JLabel("Driver 5 (Optional):");
+		final JTextField driver5Field = new JTextField(10);
+		driver5Field.setBackground(Color.LIGHT_GRAY);
 		
 		JPanel okButtonPane = new JPanel();
 		okButtonPane.setSize(175, 35);
@@ -72,6 +80,15 @@ public class newDriversWindow extends JFrame{
 						if (!driver3Field.getText().isEmpty()){
 							Driver driver3 = new Driver(driver3Field.getText());
 							e.drivers.add(driver3);
+							
+							if (!driver4Field.getText().isEmpty()){
+								Driver driver4 = new Driver(driver4Field.getText());
+								e.drivers.add(driver4);
+								if (!driver5Field.getText().isEmpty()){
+									Driver driver5 = new Driver(driver5Field.getText());
+									e.drivers.add(driver5);
+								}
+							}
 						}
 					}
 					eventDashboard ed = new eventDashboard(e);
@@ -94,6 +111,10 @@ public class newDriversWindow extends JFrame{
 		inputPane.add(driver2Field);
 		inputPane.add(driver3Label);
 		inputPane.add(driver3Field);
+		inputPane.add(driver4Label);
+		inputPane.add(driver4Field);
+		inputPane.add(driver5Label);
+		inputPane.add(driver5Field);
 		add(inputPane);
 		add(okButtonPane);
 	}

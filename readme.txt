@@ -6,6 +6,7 @@ System Requirements
 Windows 10 64-bit (will NOT work on a 32-bit machine)
 4GM of RAM minimum, 8GB+ recommended
 
+**THE BELOW IS OUTDATED. WILL UPDATE README AT LATER DATE**
 Development Revision 0.3
 -------------------------
 -GUI improvements all around

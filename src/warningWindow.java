@@ -11,10 +11,10 @@ public class warningWindow extends JFrame{
 	public warningWindow(String msg){
 		setLayout(null);
 		setTitle("Achtung!");
-		setSize(220, 75);
+		setSize(250, 75);
 		getContentPane().setBackground(Color.GRAY);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
