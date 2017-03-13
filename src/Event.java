@@ -26,6 +26,7 @@ public class Event {
 	double[] rlSetup;
 	double[] rrSetup;
 	boolean eventExists;
+	boolean isLoadedFromFile;
 	ArrayList<Driver> drivers;
 	dataLogger dl;
 	xmlLogger xml;
@@ -53,24 +54,28 @@ public class Event {
 		rrSetup = new double[2];
 		rlSetup = new double[2];
 		eventExists = false;
+		isLoadedFromFile = true;
 		drivers = new ArrayList<Driver>();
 		xml = new xmlLogger(this);
 	}
 	
 	private String getDate(){
-		String timeStamp = new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
+		String timeStamp = new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance().getTime());
 		return timeStamp;
 	}
 	
 	public String genFilename(){
-//		String filenameDate = getDate();
-//		filenameDate.replaceAll("[\\\\/:*?\"<>|]", "_");
-		this.filename = this.eventName.replaceAll("\\s+","") + "_database.xml";
+		String filenameDate = getDate();
+		filenameDate.replaceAll("[\\\\/:*?\"<>|]", "_");
+		this.filename = this.eventName.replaceAll("\\s+","")+ "_" + filenameDate + "_database.xml";
 		return this.filename;
 	}
 	
 	public void loadFromPreviousXML(String loadName){
+		resetEvent();
+		isLoadedFromFile = true;
 		xml.loadFromPreviousXML(loadName);
+		eventExists = true;
 	}
 	
 	public void createNewXML(){
@@ -85,7 +90,7 @@ public class Event {
 		xml.updateSuspensionSettings();
 	}
 	
-	public void addLap(String driver){
+	public void addLapToXML(String driver){
 		xml.addLap(driver);
 	}
 	
@@ -135,6 +140,7 @@ public class Event {
 		tireSize = null;
 		competingClass = null;
 		carMakeModel = null;
+		date = null;
 		ambientAirTemp = 0.0;
 		trackSurfaceTemp = 0.0;
 		BTC = 0.0;
@@ -147,6 +153,7 @@ public class Event {
 		flSetup = new double[2];
 		rrSetup = new double[2];
 		rlSetup = new double[2];
+		isLoadedFromFile = false;
 		drivers.clear();
 	}
 }

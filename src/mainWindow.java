@@ -8,7 +8,7 @@ public class mainWindow extends JFrame{
 	Event e;
 	public mainWindow(Event e){
 		this.e = e;
-		
+//		java.net.URL url = ClassLoader.getSystemResource("com/xyz/resources/camera.png");
 		setLayout(null);
 		setTitle("Kinetechnik Motorsports Data Acquisition and Analysis Tool");
 		
@@ -22,7 +22,7 @@ public class mainWindow extends JFrame{
 		setResizable(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		//-----------------------------------------------------------
 		//sometimes the displays initialize before the serial port is ready, causing a null pointer exception 
 		//a 300 millisecond pause before the GUI threads initialize gives the SerialReader thread enough time to get going

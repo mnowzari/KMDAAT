@@ -8,24 +8,24 @@ public class grapher {
 		
 	}
 	
-	public BufferedImage overlaidVelocityGraph(Driver driver){
+	public BufferedImage overlaidSpeedGraph(Driver driver){
 		int width = 2400;
 		int height = 300;
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		
 		int fastestLapIndex = driver.getFastestLapIndex();
 		
-		img = makeSingleVelocityGraph(driver.laps.get(fastestLapIndex).data, Color.MAGENTA);
+		img = makeSingleSpeedGraph(driver.laps.get(fastestLapIndex).data, Color.MAGENTA);
 		
 		ArrayList<dataPack> data = driver.laps.get(driver.numberOfLaps - 1).data;
 		
 		if (data.size() < 1200){
 			for (int i = 0; i < data.size(); i++){
-				if ((int)data.get(i).velocity == 0){
-					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.GREEN.getRGB());	
+				if ((int)data.get(i).speed == 0){
+					img.setRGB(i*2, height - ((int)data.get(i).speed + 1), Color.GREEN.getRGB());	
 				}
 				else {
-					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.GREEN.getRGB());
+					img.setRGB(i*2, height - ((int)data.get(i).speed), Color.GREEN.getRGB());
 				}
 			}	
 		}
@@ -33,7 +33,7 @@ public class grapher {
 		return img;
 	}
 	
-	public BufferedImage makeSingleVelocityGraph(ArrayList<dataPack> data, Color lineColor){
+	public BufferedImage makeSingleSpeedGraph(ArrayList<dataPack> data, Color lineColor){
 		int width = 2400;
 		int height = 300;
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
@@ -52,24 +52,21 @@ public class grapher {
 		}
 		if (data.size() < 1200){
 			for (int i = 0; i < data.size(); i++){
-				if ((int)data.get(i).velocity == 0){
-					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), lineColor.getRGB());	
+				if ((int)data.get(i).speed == 0){
+					img.setRGB(i*2, height - ((int)data.get(i).speed + 1), lineColor.getRGB());	
 				}
 				else {
-					img.setRGB(i*2, height - ((int)data.get(i).velocity), lineColor.getRGB());
+					img.setRGB(i*2, height - ((int)data.get(i).speed), lineColor.getRGB());
+//					
+//					if (data.get(i).test == false){
+//						img.setRGB(i*2, height - ((int)data.get(i).velocity), lineColor.getRGB());
+//					}
+//					else {
+//						img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.RED.getRGB());
+//					}
 				}
 			}	
 		}
-//		else if (data.size() > 1200){
-//			for (int i = 0; i < data.size() / 2; i++){
-//				if ((int)data.get(i).velocity == 0){
-//					img.setRGB(i*2, height - ((int)data.get(i).velocity + 1), Color.GREEN.getRGB());		
-//				}
-//				else {
-//					img.setRGB(i*2, height - ((int)data.get(i).velocity), Color.GREEN.getRGB());
-//				}
-//			}	
-//		}
 		return img;
 	}
 	

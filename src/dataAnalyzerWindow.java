@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -59,18 +60,18 @@ public class dataAnalyzerWindow extends JFrame{
 		
 		JLabel lapNumberLabel = new JLabel("Lap number to generate trace for:");
 		final JTextField lapNumberField = new JTextField("1");
-		
+				
 		JPanel buttonList = new JPanel();
 		buttonList.setBackground(Color.GRAY);
 		buttonList.setLocation(20, 60);
 		buttonList.setSize(350, 250);
 		buttonList.setLayout(new GridLayout(0, 1));
 		
-		JButton singleVtTrace = new JButton("Single Lap V/t Trace");
-		singleVtTrace.setForeground(Color.DARK_GRAY);
-		singleVtTrace.setBackground(buttonColor1);
+		JButton singleSpeedTrace = new JButton("Single Lap Speed/t Trace");
+		singleSpeedTrace.setForeground(Color.DARK_GRAY);
+		singleSpeedTrace.setBackground(buttonColor1);
 		
-		singleVtTrace.addActionListener(new ActionListener(){
+		singleSpeedTrace.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				grapher g = new grapher(e);
 				int lapToTraceIndex = Integer.valueOf(lapNumberField.getText()) - 1;
@@ -78,19 +79,19 @@ public class dataAnalyzerWindow extends JFrame{
 					warningWindow ww1 = new warningWindow("Lap does not exist!");
 				}
 				else {
-					staticPlotWindow spw = new staticPlotWindow(g.makeSingleVelocityGraph(selectedDriver.laps.get(lapToTraceIndex).data, Color.GREEN), selectedDriver.name + " Lap " + (lapToTraceIndex + 1) + " V/t Trace");					
+					staticPlotWindow spw = new staticPlotWindow(g.makeSingleSpeedGraph(selectedDriver.laps.get(lapToTraceIndex).data, Color.GREEN), selectedDriver.name + " Lap " + (lapToTraceIndex + 1) + " Speed/t Trace");					
 				}
 			}
 		});
 		
-		JButton overlaidVtTrace = new JButton("Fastest vs. Last V/t Trace");
-		overlaidVtTrace.setForeground(Color.DARK_GRAY);
-		overlaidVtTrace.setBackground(buttonColor1);
+		JButton overlaidSpeedTrace = new JButton("Fastest vs. Last Speed/t Trace");
+		overlaidSpeedTrace.setForeground(Color.DARK_GRAY);
+		overlaidSpeedTrace.setBackground(buttonColor1);
 		
-		overlaidVtTrace.addActionListener(new ActionListener(){
+		overlaidSpeedTrace.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				grapher g = new grapher(e);
-				staticPlotWindow spw = new staticPlotWindow(g.overlaidVelocityGraph(selectedDriver), selectedDriver.name + " Fastest vs. Last V/t Trace");
+				staticPlotWindow spw = new staticPlotWindow(g.overlaidSpeedGraph(selectedDriver), selectedDriver.name + " Fastest vs. Last Speed/t Trace");
 			}
 		});
 		
@@ -218,8 +219,8 @@ public class dataAnalyzerWindow extends JFrame{
 		
 		buttonList.add(lapNumberLabel);
 		buttonList.add(lapNumberField);
-		buttonList.add(singleVtTrace);
-		buttonList.add(overlaidVtTrace);
+		buttonList.add(singleSpeedTrace);
+		buttonList.add(overlaidSpeedTrace);
 		buttonList.add(tireTempAllButton);
 		buttonList.add(tireTempSelective);
 		

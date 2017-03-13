@@ -1,7 +1,8 @@
 
 public class dataPack {
 	String id;
-	double velocity;
+	String rawData;
+	double speed;
 	double latG;
 	double lonG;
 	double posX;
@@ -14,11 +15,11 @@ public class dataPack {
 	double[] flTemp;
 	double[] rrTemp;
 	double[] rlTemp;
-	String test;
 	
 	public dataPack(){
 		id = "0000";
-		velocity = 0.0;
+		rawData = " ";
+		speed = 0.0;
 		latG = 0.0;
 		lonG = 0.0;
 		posX = 0.0;

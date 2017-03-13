@@ -8,21 +8,21 @@ import java.util.Calendar;
 public class SerialReader implements Runnable{
     InputStream in;
     dataPack dataPack;
-    String tempOutput;
     public SerialReader (InputStream in){
         this.in = in;
-        tempOutput = new String();
     }
     
 	public dataPack parseAndPackageData(String out){
 		//this method will take the data from serial, parse it, make a neat dataPack object, and return that dataPack.
 		dataPack paket = new dataPack();
+		paket.rawData = out;
 		int expectedSizeOfPacket = 11;
 		String[] sOut = out.split(",");
-		if (sOut.length >= expectedSizeOfPacket){
-			paket.velocity = Double.valueOf(sOut[3]);
+		if (sOut[0].equals("F") && sOut.length == expectedSizeOfPacket){
+			paket.speed = Double.valueOf(sOut[3]);				
 			paket.latG = Double.valueOf(sOut[4]);
-			paket.lonG = Double.valueOf(sOut[6]);
+			paket.lonG = Double.valueOf(sOut[6]);			
+
 //			System.out.println(paket.velocity + ", " + paket.latG + ", " + paket.lonG);
 		}
 		else {
@@ -57,7 +57,7 @@ public class SerialReader implements Runnable{
 //		paket.rrTemp[2] = 205 + (Math.random() * ((210 - 205) + 1));
 		return paket;
 	}
-    
+	
     public void run(){
     	int buffsize = 1024;
         byte[] buffer = new byte[buffsize];
@@ -66,13 +66,13 @@ public class SerialReader implements Runnable{
         int len = -1;
         int errorCounter = 0;
 		try {
-			Thread.sleep(700);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}	
         try{
             while ((len = this.in.read(buffer)) > -1 ){
-            	if (appendToOverrun == true){
+            	if (appendToOverrun == true){        			
             		int term = 0;
             		boolean hasFound = false;
             		for (int i = 0; i < buffer.length; i++){ //finds index of terminating char
@@ -92,9 +92,11 @@ public class SerialReader implements Runnable{
             			startHere++;
             		}
             		
-            		String serialOut = new String(overrunBuffer, 0, startHere);
-            		System.out.println(serialOut);
-        			dataPack = parseAndPackageData(serialOut);
+            		if (hasFound == true){
+                		String serialOut = new String(overrunBuffer, 0, startHere);
+//                		System.out.println(serialOut);
+            			dataPack = parseAndPackageData(serialOut);
+            		}
             		appendToOverrun = false;
             		overrunBuffer = new byte[buffsize];
             	}
@@ -127,14 +129,16 @@ public class SerialReader implements Runnable{
                     		}
                     	}            	
                     	
-                		serialOut = new String(outputArray, 0, Math.abs(term - header)); 
-            			dataPack = parseAndPackageData(serialOut);
+                    	if (hasHeaderBeenFound = true && hasTermBeenFound == true){
+                    		serialOut = new String(outputArray, 0, Math.abs(term - header));
+//                    		System.out.println(serialOut);
+                			dataPack = parseAndPackageData(serialOut);
+                    	}
                 	}
-            		else if (hasTermBeenFound == false && hasHeaderBeenFound == true){
+            		else if (hasTermBeenFound == false && hasHeaderBeenFound == true){            			
             			DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             			Calendar calobj = Calendar.getInstance();
             			System.out.println("Buffer Overflow Condition. " + df.format(calobj.getTime()));
-            			
             			appendToOverrun = true;
             			int index = 0;
             			for (int i = header; i < buffer.length; i++){ //populate overrun buffer

@@ -73,14 +73,160 @@ public class xmlLogger {
 		addEventBasics();
 	}
 	
-	public void loadFromPreviousXML(String filename){
+	public void loadFromPreviousXML(String filepath){
 		try{
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			document = docBuilder.parse(filename);
+			document = docBuilder.parse(filepath);
 			
-			NodeList nList = document.getElementsByTagName("event_name");
-			System.out.println(nList.item(0).getTextContent());
+			NodeList nList = document.getElementsByTagName("event_date");
+			e.date = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("event_name");
+			e.eventName = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("event_location");
+			e.eventLocation = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("car_make_model");
+			e.carMakeModel = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("class");
+			e.competingClass = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("adjustment_coeff");
+			e.adjustmentCoeff = Double.valueOf(nList.item(0).getTextContent());
+			
+			nList = document.getElementsByTagName("car_weight_lbs");
+			e.carWeight = Double.valueOf(nList.item(0).getTextContent());
+			
+			nList = document.getElementsByTagName("tire_name");
+			e.tireName = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("tire_size");
+			e.tireSize = nList.item(0).getTextContent();
+			
+			nList = document.getElementsByTagName("FR_s");
+			e.frSetup[0] = Double.valueOf(nList.item(0).getAttributes().item(0).getTextContent());
+			e.frSetup[1] = Double.valueOf(nList.item(0).getAttributes().item(1).getTextContent());
+			
+			nList = document.getElementsByTagName("FL_s");
+			e.flSetup[0] = Double.valueOf(nList.item(0).getAttributes().item(0).getTextContent());
+			e.flSetup[1] = Double.valueOf(nList.item(0).getAttributes().item(1).getTextContent());
+
+			nList = document.getElementsByTagName("RL_s");
+			e.rlSetup[0] = Double.valueOf(nList.item(0).getAttributes().item(0).getTextContent());
+			e.rlSetup[1] = Double.valueOf(nList.item(0).getAttributes().item(1).getTextContent());
+
+			nList = document.getElementsByTagName("RR_s");
+			e.rrSetup[0] = Double.valueOf(nList.item(0).getAttributes().item(0).getTextContent());
+			e.rrSetup[1] = Double.valueOf(nList.item(0).getAttributes().item(1).getTextContent());
+
+			nList = document.getElementsByTagName("driver_name");
+			for (int i = 0; i < nList.getLength(); i++){
+				Driver loadedDriver = new Driver(nList.item(i).getTextContent());
+				e.drivers.add(loadedDriver);
+			}
+			
+//			nList = document.getElementsByTagName("BTC");
+//			e.BTC = Double.valueOf(nList.item(0).getTextContent());
+//			
+//			nList = document.getElementsByTagName("BTD");
+//			e.BTD = Double.valueOf(nList.item(0).getTextContent());
+//			
+//			nList = document.getElementsByTagName("percent_btc");
+//			e.percent_BTC = Double.valueOf(nList.item(0).getTextContent());
+//			
+//			nList = document.getElementsByTagName("percent_btd");
+//			e.percent_BTD = Double.valueOf(nList.item(0).getTextContent());
+			
+			nList = document.getElementsByTagName("driver");
+			for (int i = 0; i < nList.getLength(); i++){
+				NodeList lapList = nList.item(i).getChildNodes(); //generate list of laps for each driver
+
+				for (int k = 0; k < lapList.getLength(); k++){ //for each lap in list of laps
+					Lap newLap = new Lap(e.dl); //make new lap
+					
+					if (lapList.item(k).getNodeName().equals("lap")){
+						
+						newLap.lapNumber = Integer.valueOf(lapList.item(k).getAttributes().item(0).getTextContent());
+						NodeList dataList = lapList.item(k).getChildNodes(); //and make list of data for each respective lap
+						for (int m = 0; m < dataList.getLength(); m++){
+							
+							if (dataList.item(m).getNodeName().equals("raw_laptime")){
+								newLap.rawLaptime = Double.valueOf(dataList.item(m).getTextContent());
+							}
+							if (dataList.item(m).getNodeName().equals("adjusted_laptime")){
+								newLap.adjustedLaptime = Double.valueOf(dataList.item(m).getTextContent());
+							}
+							if (dataList.item(m).getNodeName().equals("cones_hit")){
+								newLap.cones = Integer.valueOf(dataList.item(m).getTextContent());
+							}
+							if (dataList.item(m).getNodeName().equals("data_packet")){
+								NodeList packetList = dataList.item(m).getChildNodes();
+								
+								dataPack dp = new dataPack();								
+								for (int j = 0; j < packetList.getLength(); j++){
+									
+									if (packetList.item(j).getNodeName().equals("speed")){
+										dp.speed = Double.valueOf(packetList.item(j).getTextContent());
+									}
+									if (packetList.item(j).getNodeName().equals("steering_angle")){
+										dp.steeringAngle = Double.valueOf(packetList.item(j).getTextContent());
+									}
+									if (packetList.item(j).getNodeName().equals("coolant_temp")){
+										dp.coolantTemp = Double.valueOf(packetList.item(j).getTextContent());
+									}
+									if (packetList.item(j).getNodeName().equals("engine_rpm")){
+										dp.engineRPM = Double.valueOf(packetList.item(j).getTextContent());
+									}
+									if (packetList.item(j).getNodeName().equals("tire_temps")){
+										NodeList tt = packetList.item(j).getChildNodes();
+										for (int v = 0; v < tt.getLength(); v++){
+											
+											if (tt.item(v).getNodeName().equals("FR_t")){
+												dp.frTemp[2] = Double.valueOf(tt.item(v).getAttributes().item(0).getTextContent());
+												dp.frTemp[1] = Double.valueOf(tt.item(v).getAttributes().item(1).getTextContent());
+												dp.frTemp[0] = Double.valueOf(tt.item(v).getAttributes().item(2).getTextContent());
+											}
+											if (tt.item(v).getNodeName().equals("FL_t")){
+												dp.flTemp[2] = Double.valueOf(tt.item(v).getAttributes().item(0).getTextContent());
+												dp.flTemp[1] = Double.valueOf(tt.item(v).getAttributes().item(1).getTextContent());
+												dp.flTemp[0] = Double.valueOf(tt.item(v).getAttributes().item(2).getTextContent());
+											}
+											if (tt.item(v).getNodeName().equals("RR_t")){
+												dp.rrTemp[2] = Double.valueOf(tt.item(v).getAttributes().item(0).getTextContent());
+												dp.rrTemp[1] = Double.valueOf(tt.item(v).getAttributes().item(1).getTextContent());
+												dp.rrTemp[0] = Double.valueOf(tt.item(v).getAttributes().item(2).getTextContent());
+											}
+											if (tt.item(v).getNodeName().equals("RL_t")){
+												dp.rlTemp[2] = Double.valueOf(tt.item(v).getAttributes().item(0).getTextContent());
+												dp.rlTemp[1] = Double.valueOf(tt.item(v).getAttributes().item(1).getTextContent());
+												dp.rlTemp[0] = Double.valueOf(tt.item(v).getAttributes().item(2).getTextContent());
+											}
+										}
+									}
+									if (packetList.item(j).getNodeName().equals("g-force")){
+										NodeList gF = packetList.item(j).getChildNodes();
+										for (int v = 0; v < gF.getLength(); v++){
+											
+											if (gF.item(v).getNodeName().equals("lat_g")){
+												dp.latG = Double.valueOf(gF.item(v).getTextContent());
+											}
+											if (gF.item(v).getNodeName().equals("lon_g")){
+												dp.lonG = Double.valueOf(gF.item(v).getTextContent());
+											}
+										}
+									}
+								}
+								newLap.data.add(dp);
+							}
+						}
+						e.drivers.get(i).addLap(newLap);
+					}
+				}
+			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -164,7 +310,7 @@ public class xmlLogger {
 				data.appendChild(driver);
 			}
 			root.appendChild(data);
-			
+						
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(document);
@@ -239,9 +385,9 @@ public class xmlLogger {
 							Element dataPack = document.createElement("data_packet");
 							dataPack.setAttribute("id", String.valueOf(d));
 							
-							Element velocity = document.createElement("velocity");
-							velocity.setTextContent(String.valueOf(temp.laps.get(k).data.get(d).velocity));
-							dataPack.appendChild(velocity);
+							Element speed = document.createElement("speed");
+							speed.setTextContent(String.valueOf(temp.laps.get(k).data.get(d).speed));
+							dataPack.appendChild(speed);
 							
 							Element steeringAngle = document.createElement("steering_angle");
 							steeringAngle.setTextContent(String.valueOf(temp.laps.get(k).data.get(d).steeringAngle));

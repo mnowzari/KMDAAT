@@ -126,7 +126,9 @@ public class mainMenu extends JFrame{
 			    int returnVal = chooser.showOpenDialog(mainMenu.this);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
 			    	String filepath = chooser.getSelectedFile().getPath();
+			    	String filename = chooser.getSelectedFile().getName();
 			    	e.loadFromPreviousXML(filepath);
+			    	e.filename = filename;
 			    }
 			}
 		});
@@ -173,6 +175,16 @@ public class mainMenu extends JFrame{
 				ttdThread.start();
 			}
 		});
+		
+		JButton advSettings = new JButton("Settings");
+		advSettings.setForeground(Color.DARK_GRAY);
+		advSettings.setBackground(Color.LIGHT_GRAY);
+		
+		advSettings.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				settingsMenu sm = new settingsMenu(e);
+			}
+		});
 
 		buttonList.add(createNewEvent);
 		buttonList.add(loadEvent);
@@ -184,6 +196,7 @@ public class mainMenu extends JFrame{
 		buttonList.add(tireMonitor);
 		buttonList.add(dataAnalyzer);
 		buttonList.add(testDaySuite);
+		buttonList.add(advSettings);
 		add(buttonList);
 
 	}

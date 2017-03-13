@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Lap implements Runnable{
-	String lapNumber;
+	int lapNumber;
 	String driverName;
 	int cones;
 	double rawLaptime;
@@ -11,7 +11,7 @@ public class Lap implements Runnable{
 	dataLogger dl;
 	
 	public Lap(dataLogger dl){
-		lapNumber = "";
+		lapNumber = 0;
 		driverName = "";
 		cones = 0;
 		rawLaptime = 0.0;

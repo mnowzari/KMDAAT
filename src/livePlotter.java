@@ -53,7 +53,7 @@ public class livePlotter extends JFrame implements Runnable{
 	private void drawVisual(dataLogger dl, Graphics2D g2, int xPosCounter){
 		g2.setColor(Color.BLUE);
 		Rectangle2D rect = new Rectangle2D.Double();
-		rect.setRect(xPosCounter, dl.sr.dataPack.velocity, 1, 1);
+		rect.setRect(xPosCounter, dl.sr.dataPack.speed, 1, 1);
 		g2.draw(rect);
 		xPosCounter++;
 	}

@@ -89,9 +89,9 @@ public class lapManager extends JFrame{
 		
 		saveLap.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				if (!rawLapTimeField.getText().isEmpty() && selectedDriver.name != "null"){
+				if (!rawLapTimeField.getText().isEmpty() && selectedDriver.name != "null" && conesHitField.getText() != ""){
 					newLap.driverName = selectedDriver.name;
-					newLap.lapNumber = String.valueOf(lapNumber(selectedDriver) + 1);
+					newLap.lapNumber = lapNumber(selectedDriver) + 1;
 					newLap.rawLaptime = Double.valueOf(rawLapTimeField.getText());
 					newLap.adjustedLaptime = newLap.rawLaptime * e.adjustmentCoeff;
 					newLap.cones = Integer.valueOf(conesHitField.getText());
@@ -100,9 +100,9 @@ public class lapManager extends JFrame{
 					grapher g = new grapher(e);
 //					staticPlotWindow spw0 = new staticPlotWindow(g.makeSingleTireTempGraph(newLap.data, "all"), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " Tire Temp/t, ALL");
 //					staticPlotWindow spw1 = new staticPlotWindow(g.makeSingleVelocityGraph(newLap.data, Color.GREEN), selectedDriver.name + " Lap " + (lapNumber(selectedDriver)) + ", " + " V/t Trace");
-					staticPlotWindow spw2 = new staticPlotWindow(g.overlaidVelocityGraph(selectedDriver), selectedDriver.name + " Overlaid V/t");
+					staticPlotWindow spw2 = new staticPlotWindow(g.overlaidSpeedGraph(selectedDriver), selectedDriver.name + " Overlaid Speed/t");
 					
-					e.addLap(selectedDriver.name);
+					e.addLapToXML(selectedDriver.name);
 					setVisible(false);
 					dispose();
 				}
