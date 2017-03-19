@@ -46,7 +46,7 @@ public class staticPlotWindow extends JFrame{
 		xyLabel.setSize(335, 13);
 		xyLabel.setLocation(25, 300);
 				
-		final JPanel jpl = new JPanel();
+		final JPanel jpl = new JPanel(); //Alternatively, make this is a JScrollPane with "label" as an argument, then comment out line 32
 		jpl.setSize(2400, 305);
 		jpl.setLocation(25, -5);
 		
